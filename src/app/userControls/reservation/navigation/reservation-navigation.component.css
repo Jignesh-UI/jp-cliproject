@@ -1,0 +1,8 @@
+.breadcrumb { margin:5px 0; background:transparent; border-bottom:1px dotted #bfbfbf; padding-bottom:10px; padding-top:5px; }
+.breadcrumb a { background:#dfdfdf; border-radius: 15px; color: #000; float: none; font-size: 14px; line-height: 20px; padding:5px 25px; position:relative; text-decoration:none; }
+.breadcrumb a.active, .breadcrumb a:hover { background:#262930; color:#fff; }
+.breadcrumb a span { border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #262930; bottom: -5px; display: inline-block; height: 0; left: 48%; position: absolute; width: 0; display:none; }
+.breadcrumb a.active span { display:block; }
+.breadcrumb a.active:hover { cursor: default; }
+.breadcrumb a.active:hover span { display:block; }
+.breadcrumb a + a { margin-left: 30px; }

@@ -1,0 +1,25 @@
+.topNav .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.navbar-default{ border-color:transparent; background-color: transparent;}
+.topNav .navbar-collapse{ background: #1d1e20; -webkit-border-radius:5px 5px  0px  0px; -moz-border-radius:5px 5px  0px  0px; border-radius:5px 5px  0px  0px;}
+.navbar-nav{ margin:10px 0 0 0;}
+.topNav{ padding: 0; margin: 0;}
+.topNav .navbar{padding:0px 15px 0 15px; border-radius: 4px 4px 0 0; margin-bottom: 0; border:0; min-height: auto;}
+.topNav li.nav-item{  padding-left:0; padding-right:0; margin-left: 10px; border-radius: 4px 4px 0 0;}
+.topNav li:first-child.nav-item{ margin-left: 0;}
+.topNav li.nav-item .nav-link{ color: #fff; padding: 8px 25px; cursor: pointer;
+-webkit-border-radius:5px 5px  0px  0px; -moz-border-radius:5px 5px  0px  0px; border-radius:5px 5px  0px  0px;
+background: #434953; 
+background: -moz-linear-gradient(top, #434953 1%, #252a34 100%); 
+background: -webkit-linear-gradient(top, #434953 1%,#252a34 100%);
+background: linear-gradient(to bottom, #434953 1%,#252a34 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#434953', endColorstr='#252a34',GradientType=0 );
+}
+.topNav li.nav-item.active{ background: #333;}
+.topNav li.nav-item.active .nav-link{ color: #fff;}
+.topNav li.nav-item .nav-link:focus, 
+.topNav li.nav-item .nav-link:hover,
+.topNav li.nav-item .nav-link.active{background: #fff; border-radius: 4px 4px 0 0; color: #17365d;}

@@ -1,0 +1,47 @@
+<div class="leftNavigation">
+  <accordion [closeOthers]="oneAtATime">
+    <accordion-group #assetPanel [isOpen]="true">
+      <div accordion-heading>
+        <a routerLink="s_assetStatus" href="javascript:;">Assets</a>
+        <i class="pull-right float-xs-right glyphicon" [ngClass]="{'glyphicon-chevron-down': assetPanel?.isOpen, 'glyphicon-chevron-right': !assetPanel?.isOpen}"></i>
+      </div>
+      <ul>
+        <li><a routerLinkActive="active" routerLink="s_assetStatus"  href="javascript:;">Asset Status</a></li>
+        <li><a routerLinkActive="active" routerLink="s_rentalClass" href="javascript:;">Rental Class</a></li>
+        <li><a routerLinkActive="active" routerLink="s_manageAssets" href="javascript:;">Manage Assets</a></li>
+        <li><a routerLinkActive="active" routerLink="s_transferAssets" href="javascript:;">Transfer Assets</a></li>
+        <li><a routerLinkActive="active" routerLink="s_manageAssetAvailability" href="javascript:;">Manage Asset Availability</a></li>
+      </ul>
+    </accordion-group>
+    <accordion-group #locationPanel [isOpen]="true">
+      <div accordion-heading>
+        <a routerLink="s_location" href="javascript:;">Locations</a>
+        <i class="pull-right float-xs-right glyphicon" [ngClass]="{'glyphicon-chevron-down': locationPanel?.isOpen, 'glyphicon-chevron-right': !locationPanel?.isOpen}"></i>
+      </div>
+      <ul>
+        <li><a routerLink="s_location" href="javascript:;">Location</a></li>
+        <li><a routerLink="s_l_rentalHours" href="javascript:;">Rental Hours</a></li>
+        <li><a routerLink="s_l_rentalPrice" href="javascript:;">Rental Price</a></li>
+        <li><a routerLink="s_l_assetAPA" href="javascript:;">Asset Auto Priority Assignment</a></li>
+        <li><a routerLink="s_l_otherSettings" href="javascript:;">Other Settings</a></li>
+      </ul>
+    </accordion-group>
+    <accordion-group #globalFieldsPanel [isOpen]="true">
+      <div accordion-heading>
+        <a routerLink="s_g_taxCharge"  href="javascript:;">Global Fields</a>
+        <i class="pull-right float-xs-right glyphicon" [ngClass]="{'glyphicon-chevron-down': globalFieldsPanel?.isOpen, 'glyphicon-chevron-right': !globalFieldsPanel?.isOpen}"></i>
+      </div>
+      <ul>
+        <li><a routerLink="s_g_taxCharge" href="javascript:;">Tax Charge</a></li>
+        <li><a routerLink="s_g_otherCharge" href="javascript:;">Other Charge</a></li>
+        <li><a routerLink="s_g_reason" href="javascript:;">Reason</a></li>
+        <li><a routerLink="s_g_license" href="javascript:;">License</a></li>
+      </ul>
+    </accordion-group>
+    <accordion-group [isDisabled]="true">
+      <div accordion-heading>
+        <a routerLink="s_globalSettings" href="javascript:;">Global Settings</a>
+      </div>
+    </accordion-group>
+  </accordion>
+</div>

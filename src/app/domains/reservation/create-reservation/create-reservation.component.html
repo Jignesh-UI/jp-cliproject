@@ -1,0 +1,101 @@
+<h1 class="pageTitle">
+  Search Rental Class
+</h1>
+
+
+<div id="sectionMain" class="sectionMain col-lg-12 col-md-12 col-sm-12 col-xs-12 col-padding-zero">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-padding-zero table-view">
+    <div class="row row-mobile">
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-padding">
+        <label class="label">Customer Username: </label>
+        <select class="form-control">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-padding paddingLeft10">
+        <label class="label">Pick-up Location:</label>
+        <select class="form-control">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-padding paddingLeft10">
+        <label class="label">Return Location:</label>
+        <select class="form-control">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+      <div class="clear"> </div>
+    </div>
+
+    <div class="row row-mobile">
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-padding">
+        <label class="label"> Rental Class: </label>
+        <select class="form-control">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-padding paddingLeft10">
+        <label class="label">Pick-up Date &amp; Time: </label>
+        <input class="form-control" placeholder="MM/DD/YYYY" />
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-padding paddingLeft10">
+        <label class="label">Return Date &amp; Time: </label>
+        <input class="form-control" placeholder="MM/DD/YYYY" />
+      </div>
+      <div class="clear"> </div>
+    </div>
+
+    <div class="rowControl">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <input type="checkbox" id="ExactMatchCheckBox" class="k-checkbox">
+        <label class="k-checkbox-label" for="ExactMatchCheckBox">Exact Match</label> &nbsp; &nbsp;
+        <input type="checkbox" id="IncludeCloseReservationCheckBox" class="k-checkbox">
+        <label class="k-checkbox-label" for="IncludeCloseReservationCheckBox">Include Closed Reservation</label>
+      </div>
+      <div class="clear"> </div>
+    </div>
+  </div>
+
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-padding-zero btn-Line-Box">
+    <button id="SearchButton" name="SearchButton" type="button" class="btn btn-default btn-green" data-toggle="modal">Search</button>
+  </div>
+
+  <div class="clear"></div>
+</div>
+
+
+<div class="grid-box kendoGridBox">
+  <table id="SearchReservationGrid" class="table table-default table-data">
+    <thead>
+      <tr>
+        <th> Reservation Number</th>
+        <th>Customer Name</th>
+        <th>Asset Number</th>
+        <th>Rental Class</th>
+        <th>Pick-Up Location</th>
+        <th>Pick-up Date &amp; Time</th>
+        <th>Dispatch Date &amp; Time</th>
+        <th>Return Location</th>
+        <th>Return Date &amp; Time</th>
+        <th>Reservation Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+  </table>
+</div>
