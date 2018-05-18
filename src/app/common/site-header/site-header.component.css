@@ -2,16 +2,33 @@ ul{margin: 0 0 0; padding: 0; list-style: none; font-size: 14px;}
 ul li{ padding: 0; float: left;}
 ul li a{ text-decoration: none; padding:10px 15px; display: block;}
 
-.navbar-brand{ display: block; margin-left:0px; height: auto; padding-left: 0;}
-.navbar-brand img{ display: block;}
-.navbar {padding:0;position: relative; margin-top: 5px;}
-.navbar-light .navbar-nav .open > .nav-link, .navbar-light .navbar-nav .open > .nav-link:focus, .navbar-light .navbar-nav .open > .nav-link:hover, .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .active > .nav-link:focus, .navbar-light .navbar-nav .active > .nav-link:hover, .navbar-light .navbar-nav .nav-link.open, .navbar-light .navbar-nav .nav-link.open:focus, .navbar-light .navbar-nav .nav-link.open:hover, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.active:focus, .navbar-light .navbar-nav .nav-link.active:hover{background: #ccc; color: #333;}
-.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover{background: #ccc; color: #333;}
-.navbar-nav .nav-item + .nav-item{ margin-left: 0;}
-
-.headerButtonControl{ float: right; margin-top:25px; margin-right:0px;}
+.row.rowHeader{ margin:0 0 10px 0;}
+.headerButtonControl{ float: right; margin-top:10px; margin-right:0px;}
 .headerButtonControl .btn{float: left;}
 .btn-w-separator{ border: 1px dotted #f1f1f1; display: block;float: left;height: 22px;margin: 0 5px;width: 1px;}
 
-.lbl-welcomeMessage{ color: #fff; font-size: 12px; display: block; margin-top: 25px;}
+.lbl-welcomeMessage{ color: #fff; font-size: 12px;  margin-top:10px; display: block;}
 .lbl-welcomeLabel{color: #f1f1f1; }
+.navbar-dark .navbar-toggler{ margin-top: 10px;}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .headerButtonControl{ margin-top:0;}
+  .navbar-brand{ padding: 5px; margin-bottom: 10px; clear:both;}
+  .topNav{ border-top: 1px solid #888; margin-top: 10px;}
+  .lbl-welcomeMessage{ margin-top:15px;}
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+}
+
+@media (min-width: 992px){
+  .lbl-welcomeMessage{ margin-top:15px;}
+}
+
+@media (min-width: 576px){
+  .lbl-welcomeMessage{ margin-top:10px;}
+}
+
+@media screen and (max-width: 767px) and (min-width: 320px){
+  .lbl-welcomeMessage{ margin-top:10px; font-size: 14px;}
+}

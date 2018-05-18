@@ -1,59 +1,65 @@
-body{ background:url(/assets/images/mp_bg.png) repeat; font-family:"Segoe UI",Arial,Helvetica,sans-serif;}
+app-site-header{ display: none;}
+app-site-footer{ display: none !important;}
+body{ background: url('/assets/images/mp_bg.png') repeat; }
 
-a:hover{ text-decoration:none;}
-
-#loginContainer{ width:600px; margin:0 auto; padding:100px 0; }
+#loginContainer{ width:600px; margin:0 auto; padding:0; transform: translate(-50%, -50%); left: 50%; top: 50%; position: absolute; }
 h1{ font-size:20px; color:#fff; text-align:center; font-weight:bold; background: transparent;}
-#loginBox{ width:100%; height:300px;
-background: #5c6574;
-background: -moz-linear-gradient(top,  #5c6574 1%, #1d1e21 100%);
-background: -webkit-linear-gradient(top,  #5c6574 1%,#1d1e21 100%);
-background: linear-gradient(to bottom,  #5c6574 1%,#1d1e21 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5c6574', endColorstr='#1d1e21',GradientType=0 );
--webkit-border-radius:15px; -moz-border-radius:15px; border-radius:15px;
--webkit-box-shadow: 10px 10px 15px 2px rgba(0,0,0,0.40);
--moz-box-shadow: 10px 10px 15px 2px rgba(0,0,0,0.40);
-box-shadow: 10px 10px 15px 2px rgba(0,0,0,0.40);}
-.btn-green { background: #d6e0ae; background: -moz-linear-gradient(top, #d6e0ae 0%, #abbe7c 100%); background: -webkit-linear-gradient(top, #d6e0ae 0%, #abbe7c 100%); background: linear-gradient(to bottom, #d6e0ae 0%, #abbe7c 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6e0ae', endColorstr='#abbe7c', GradientType=0 ); border:1px solid #5f7223; padding:5px 20px; }
-.btn-green:hover { background: #abbe7c; background: -moz-linear-gradient(top, #abbe7c 0%, #d6e0ae 100%, #d6e0ae 100%); background: -webkit-linear-gradient(top, #abbe7c 0%, #d6e0ae 100%, #d6e0ae 100%); background: linear-gradient(to bottom, #abbe7c 0%, #d6e0ae 100%, #d6e0ae 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#abbe7c', endColorstr='#d6e0ae', GradientType=0 ); border:1px solid #5f7223; }
+#loginBox{ width:100%; height:300px; background: #5c6574; background: -moz-linear-gradient(top,  #5c6574 1%, #1d1e21 100%); background: -webkit-linear-gradient(top,  #5c6574 1%,#1d1e21 100%); background: linear-gradient(to bottom,  #5c6574 1%,#1d1e21 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5c6574', endColorstr='#1d1e21',GradientType=0 ); -webkit-border-radius:15px; -moz-border-radius:15px; border-radius:15px; -webkit-box-shadow: 10px 10px 15px 2px rgba(0,0,0,0.40);-moz-box-shadow: 10px 10px 15px 2px rgba(0,0,0,0.40); box-shadow: 10px 10px 15px 2px rgba(0,0,0,0.40);}
+
 .loginLeft{ background:#fff; float:left; height:270px; width:250px; margin:15px 15px 15px 20px; padding:0 10px; text-align:center; -webkit-border-radius:15px 0 0 15px; -moz-border-radius:15px 0 0 15px; border-radius:15px 0 0 15px;}
 .loginLeft img{ display:inline-block; margin:110px 0 0 0;}
 .loginRight{ float:left; color:#fff; font-size:14px; margin:15px 15px 0 0; width:280px;}
 .loginRight h2{ color:#fff; border-bottom:1px dashed #6b737f; font-size:18px; margin:0 0 5px; padding:0 0 10px;}
-.loginRight label{ display:block; font-weight:normal; text-align: left; color:#fff;}
-.loginRight input[type='text'],.loginRight input[type='password']{
-background:#767e91; border:1px solid #b6b9be; color:#fff; font-weight:normal; padding:5px; width:250px;
--webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px;}
-.loginRight .inputGroup{ padding-bottom:10px;}
+.loginRight label{ display:block; font-weight:normal; text-align: left; color:#fff; font-size: 14px;}
+
+.loginRight input[type='text'],
+.loginRight input[type='password']{background:#767e91; border:1px solid #b6b9be; color:#fff; font-weight:normal; padding:5px; width:250px; -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px;}
+.loginRight .inputGroup{ padding-bottom:20px;}
 .loginRight a{ color:#408ac1; font-size:12px; font-weight:normal; margin-left:15px;}
-.loginRight  input[type='button'],.loginRight  input[type='submit'],.loginRight  input[type='reset']{ border:1px solid #5b7225;
-color:#000; padding:5px 10px;
-background: #dee8c1;
-background: -moz-linear-gradient(top,  #dee8c1 1%, #acbf78 100%);
-background: -webkit-linear-gradient(top,  #dee8c1 1%,#acbf78 100%);
-background: linear-gradient(to bottom,  #dee8c1 1%,#acbf78 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dee8c1', endColorstr='#acbf78',GradientType=0 );
-}
+
+.loginRight  input[type='button'],
+.loginRight  input[type='submit'],
+.loginRight  input[type='reset']{ border:1px solid #5b7225; color:#000; padding:5px 10px; background: #dee8c1; background: -moz-linear-gradient(top,  #dee8c1 1%, #acbf78 100%); background: -webkit-linear-gradient(top,  #dee8c1 1%,#acbf78 100%); background: linear-gradient(to bottom,  #dee8c1 1%,#acbf78 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dee8c1', endColorstr='#acbf78',GradientType=0 ); }
+
 .form-control{ display: inline-block; width: 95%; padding:5px 10px; line-height: normal; height: auto;}
 .loginRight  input[type='button']:focus:active:not(.k-state-disabled):not([disabled]),
 .loginRight  input[type='submit']:focus:active:not(.k-state-disabled):not([disabled]),
 .loginRight  input[type='reset']:focus:active:not(.k-state-disabled):not([disabled]){color:#000; border-color:#5b7225; box-shadow:0 0 3px 0px #000 inset;}
 
-.k-button.k-state-disabled, .k-button.k-state-disabled:active, .k-button.k-state-disabled:hover,
-.k-button[disabled], .k-state-disabled .k-button, .k-state-disabled .k-button:active,
-.k-state-disabled .k-button:hover{ background:#dee8c1 !important; color:#333 !important; border:1px solid #5b7225 !important;}
-
-.tagLine{ font-size:11px; text-align:center; color:#8f8f8f; padding-top:10px;}
-.tagLine a{ color:#8f8f8f; }
 .field-validation-error { display:block;color:#ff0000;line-height:16px; font-size:14px;}
-.loginValidationSummary{ margin:0 0 5px; padding:0; color:#ff0000; font-weight:bold; line-height:16px; font-size:14px; }
 .reqLabel{clear:both; color:#ff0000; display: inline-block;}
+.alert-danger{ color: #000; font-size: 14px; font-weight:bold; padding: 0.5rem 5px; }
 
 
-/*----------------------Kendo Button Starts ----------------------*/
-.k-button:focus:not(.k-state-disabled):not([disabled]){box-shadow:0 0 0; -webkit-box-shadow:0 0 0;-moz-box-shadow:0 0 0;}
-.k-button:focus, .k-split-button:focus, .k-split-button:active, .inputGroup .btn-green:active, .inputGroup .btn-green:focus{ outline:0; box-shadow:0 0 0;
-    background: #abbe7c; background: -moz-linear-gradient(top, #abbe7c 0%, #d6e0ae 100%, #d6e0ae 100%); background: -webkit-linear-gradient(top, #abbe7c 0%, #d6e0ae 100%, #d6e0ae 100%); background: linear-gradient(to bottom, #abbe7c 0%, #d6e0ae 100%, #d6e0ae 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#abbe7c', endColorstr='#d6e0ae', GradientType=0 ); border:1px solid #5f7223;
+
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  #loginContainer{ padding:0; width: 100%; left: 0; top:40px; transform: translateY(0);}
+  #loginBox{border-radius: 0; height: auto; padding-bottom: 50px;}
+  .loginLeft img{margin: 0;}
+  .loginLeft{float:none; height:auto;border-radius: 0;width: 100%;margin: 0;padding: 10px;}
+  .loginRight{ float:none; margin: 10px auto; width: 90%;}
+  .loginRight input[type='text'], .loginRight input[type='password']{width: 95%;}
+  h1{ font-size: 18px;}
+  .loginRight h2{ font-size: 16px;}
+  .loginRight label{ font-size: 14px;}
+  .loginRight .inputGroup{ float:none; width:100%; padding-bottom:30px; position: relative; }
+  .loginRight:after { clear: both; content: ""; display: block; }
+  .reqLabel{ position: absolute; left:70px; top:0; }
+ }
+
+
+@media screen and (min-width:1px) and (max-width:319px) {
+  #loginContainer{ padding:0; width: 100%; left: 0; top:40px; transform: translateY(0);}
+  #loginBox{border-radius: 0; height: auto; padding-bottom: 50px;}
+  .loginLeft img{margin: 0;}
+  .loginLeft{float:none; height:auto;border-radius: 0;width: 100%;margin: 0;padding: 10px;}
+  .loginRight{ float:none; margin: 10px auto; width: 90%;}
+  .loginRight input[type='text'], .loginRight input[type='password']{width: 95%;}
+  h1{ font-size: 14px;}
+  .loginRight h2{ font-size: 14px;}
+  .loginRight .inputGroup{ float:none; width:100%; padding-bottom:30px; position: relative; }
+  .loginRight:after { clear: both; content: ""; display: block; }
+  .reqLabel{ position: absolute; left:70px; top:0; }
 }
-.k-button:focus:active:not(.-state-disabled):not([disabled]){box-shadow:0 0 0;-webkit-box-shadow:0 0 0;-moz-box-shadow:0 0 0;}
-/*----------------------Kendo Button Ends ----------------------*/
+

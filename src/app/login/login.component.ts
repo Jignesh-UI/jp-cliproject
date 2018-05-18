@@ -1,33 +1,42 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from './login-service.service';
 
 @Component({
   moduleId: module.id,
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
-  username;
-  passwprd;
-  loginValidationSummary;
-  constructor(private router: Router, private user: LoginService) { }
+  invalidLogin: boolean;
+  isLoading;
 
-  ngOnInit() {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private loginService: LoginService
+  ) {}
+
+  ngOnInit() {}
+
+  signIn(loginobject) {
+    this.isLoading = true;
+    this.loginService.login(loginobject).subscribe(
+      result => {
+        if (result) {
+          const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
+          this.router.navigate([returnUrl || '/setup/']);
+        } else {
+          this.invalidLogin = true;
+        }
+        this.isLoading = false;
+      },
+      (error) => {
+        this.invalidLogin = true;
+        this.isLoading = false;
+      }
+    );
   }
-
-  onSubmit(e) {
-    e.preventDefault();
-    this.username = e.target.elements[0].value;
-    this.passwprd = e.target.elements[1].value;
-    if (this.username === 'admin' && this.passwprd === 'admin') {
-      this.user.setUserLoggedIn();
-      this.router.navigate(['home']);
-    } else {
-      this.loginValidationSummary = 'Incorrect username or password. Enter valid credentials and try again.';
-    }
-
-  }
-
 }

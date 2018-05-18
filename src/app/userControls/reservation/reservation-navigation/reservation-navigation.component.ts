@@ -1,24 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { AccordionModule } from 'ngx-bootstrap';
 
 declare var $: any;
 
-
 @Component({
-  moduleId: module.id,
-  selector: 'app-setup-navigation',
-  templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.css']
+  selector: 'app-reservation-navigation',
+  templateUrl: './reservation-navigation.component.html',
+  styleUrls: ['./reservation-navigation.component.css']
 })
-export class NavigationComponent implements OnInit {
-   public oneAtATime = false;
+export class ReservationNavigationComponent implements OnInit {
 
   constructor() { }
 
   ngOnInit() {
-    $('.arrow').click(function() {
-      $(this).toggleClass('lArrow');
-      $(this).toggleClass('rArrow');
+    $('.showNav').click(function() {
+      $(this).children('.arrow').toggleClass('lArrow');
+      $(this).children('.arrow').toggleClass('rArrow');
       $('#subPageNav').toggleClass('slideInLeft');
       $('#subPageNav').toggleClass('hideMenu');
     });
