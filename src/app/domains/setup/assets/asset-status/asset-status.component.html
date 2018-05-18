@@ -1,42 +1,49 @@
 <h1 class="pageTitle">
   Asset Status
 </h1>
+<!-- Button trigger modal -->
+<button *ngxPermissionsOnly="['add']" type="button" class="btn btn-default btn-normal" data-toggle="modal" data-target="#bs-modal"
+  (click)="addData()"> Add </button>
+<app-loading-spinner [loading]="isLoading"></app-loading-spinner>
 
-<button class="btn btn-default btn-normal" (click)="editModal.show(); addData()" type="button"> Add  </button>
+<app-popup></app-popup>
 
-<app-loading-spinner *ngIf="showSpinner" ></app-loading-spinner>
-
-<table class="table table-default table-data">
+<table class="table table-default table-hover table-data">
   <thead>
     <tr class="theadPagination">
-      <th colspan="6">
+      <th colspan="5">
         <pagination-template #p="paginationApi" (pageChange)="pageChange = $event">
           <ul class="ngx-pagination" role="navigation" aria-label="Pagination">
-            <li class="pagination-previous" [class.disabled]="p.isFirstPage()"> <span *ngIf="p.isFirstPage()"> Previous </span> <a *ngIf="!p.isFirstPage()" (click)="p.previous()"> Previous </a>              </li>
+            <li class="pagination-previous" [class.disabled]="p.isFirstPage()">
+              <span *ngIf="p.isFirstPage()"> Previous </span>
+              <a *ngIf="!p.isFirstPage()" (click)="p.previous()"> Previous </a>
+            </li>
             <li *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
               <a (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">
                 <span>{{ page.label }}</span>
-                </a>
+              </a>
               <div *ngIf="p.getCurrent() === page.value">
                 <span>{{ page.label }}</span>
               </div>
             </li>
-            <li class="pagination-previous" [class.disabled]="p.isLastPage()"> <span *ngIf="p.isLastPage()"> Previous </span> <a (click)="p.next()" *ngIf="!p.isLastPage()"> Next </a> </li>
+            <li class="pagination-previous" [class.disabled]="p.isLastPage()">
+              <span *ngIf="p.isLastPage()"> Previous </span>
+              <a (click)="p.next()" *ngIf="!p.isLastPage()"> Next </a>
+            </li>
           </ul>
         </pagination-template>
       </th>
     </tr>
     <tr>
-      <th style="width: 100px;">id</th>
-      <th style="width:15%;"> Asset Status</th>
+      <th style="width:100px;"> Asset Status</th>
       <th> Asset Status Description</th>
       <th>Status</th>
       <th>Available for Reservation</th>
-      <th>Action</th>
+      <th style="width:65px;">Action</th>
     </tr>
     <tr class="filter-row">
-      <th></th>
-      <th> <input type="text" class="form-control srh-form-control" [(ngModel)]='assetStatusFilter' name="assetStatusFilter" id="assetStatusFilter"
+      <th>
+        <input type="text" class="form-control srh-form-control" [(ngModel)]='assetStatusFilter' name="assetStatusFilter" id="assetStatusFilter"
           placeholder="Asset Status"> </th>
       <th> </th>
       <th></th>
@@ -46,68 +53,75 @@
 
   </thead>
   <tbody>
-    <tr *ngFor="let assetDataList of assetStatusData
+    <tr (click)="setClickedRow(i)" [class.active]="i == selectedRow" *ngFor="let i = index; let assetDataList of assetStatusData
       | assetsFilter:assetStatusFilter | paginate: {itemsPerPage:pageSize, currentPage:pageChange} ">
-      <!--<td> <a [routerLink]="['/setup/s_assetSDetail',assetDataList.assetStatusID]"> {{assetDataList.assetStatusID}} </a> </td>-->
-      <td> <a [routerLink]="['/setup/s_assetSDetail',assetDataList.assetStatusID]"> {{assetDataList.assetStatusID}} </a> </td>
       <td> {{assetDataList.assetsStatus | uppercase}} </td>
       <td> {{assetDataList.assetStatusDescription}} </td>
       <td> {{assetDataList.isObsolete ? 'Obsolete':'Available'}} </td>
       <td> {{assetDataList.isAvailableForReservation ? 'Yes':'No' }} </td>
       <td>
-        <a href="javascript:;" (click)="onEdit(assetDataList); editModal.show()" class="icon_modify"></a>
-        <a *ngIf="assetDataList.isObsolete ? false : true" (click)="deleteUser(assetDataList.assetStatusID)" href="javascript:;" class="icon_delete"></a>
+        <a (click)="onEdit(assetDataList);" data-toggle="modal" data-target="#bs-modal" class="icon_modify"></a>
+        <a *ngxPermissionsOnly="['full','admin']" (click)="onDelete(assetDataList);" class="icon_delete"></a>
+        <div class="clear"></div>
+        <!-- *ngIf="assetDataList.isObsolete ? false : true" -->
       </td>
     </tr>
   </tbody>
   <tfoot>
     <tr class="tfootPagination">
-      <th colspan="6">
+      <th colspan="5">
         <pagination-controls class="myPagination" (pageChange)="pageChange = $event" autoHide="false"></pagination-controls>
       </th>
     </tr>
   </tfoot>
 </table>
 
-<div bsModal #editModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" [config]="{backdrop: 'static'}" aria-labelledby="myLargeModalLabel"
-  aria-hidden="true">
+<div id="bs-modal" bsModal #editModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" [config]="{backdrop: 'static'}"
+  aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
 
       <div class="modal-header">
         <h4 class="modal-title pull-left"> {{modalPopUpTitle}} </h4>
-        <button type="button" class="close pull-right" (click)="editModal.hide()" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form class="form-horizontal" (ngSubmit)="onSubmit()">
+        <form class="form-horizontal">
+          <div class="alert alert-danger" role="alert">
+            Form DATA Exception Validation Summary if occurs.
+          </div>
           <div class="form-group">
-            <label class="col-sm-4 control-label" for="assetStatus">Status :</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" [(ngModel)]='assetStatus' name="assetStatus" id="assetStatus" required placeholder="Status">
+            <label for="assetStatus" class="reqCtrl">Status :</label>
+            <input type="text" class="form-control is-valid" [(ngModel)]='assetStatus' name="assetStatus" maxlength="1" id="assetStatus"
+              required placeholder="Status">
+            <div class="invalid-feedback">
+              Please provide a valid Asset Status.
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-4 control-label" for="assetStatusDesc">Status Description :</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" [(ngModel)]='assetStatusDesc' placeholder="Status Description" name="assetStatusDesc"
-                id="assetStatusDesc" required>
+            <label for="assetStatusDesc" class="reqCtrl">Status Description :</label>
+            <textarea class="form-control is-invalid" [(ngModel)]='assetStatusDesc' placeholder="Status Description" maxlength="100"
+              name="assetStatusDesc" id="assetStatusDesc" required cols="20" rows="5"></textarea>
+            <div class="invalid-feedback">
+              Please provide a valid Asset Description.
             </div>
           </div>
-          <div class="form-group">
-            <div class="col-sm-12">
-              <div class="checkbox">
-                <label><input type="checkbox"> Available for Reservation </label>
-              </div>
-            </div>
+          <div class="form-check">
+            <label>
+              <input type="checkbox" id="availableforReservation" name="availableforReservation" [(ngModel)]="availableforReservation"> Available for Reservation </label>
           </div>
         </form>
       </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" (click)="editModal.hide()">Save</button>
-        <button class="btn btn-default" (click)="editModal.hide()">Save &amp; New</button>
-        <button class="btn btn-default" (click)="editModal.hide()" data-dismiss="modal">Cancel</button>
+      <div class="modal-footer" *ngIf="assetStatusBtnControls==true">
+        <button class="btn btn-default" (click)="onSubmit(); editModal.hide()" data-dismiss="modal">Save</button>
+        <button class="btn btn-default" (click)="onSubmit();">Save &amp; New</button>
+        <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+      </div>
+      <div class="modal-footer" *ngIf="assetStatusBtnControls==false">
+        <button class="btn btn-default" (click)="onSubmitUpdate(); editModal.hide()" data-dismiss="modal">Update</button>
+        <button class="btn btn-default" (click)="editModal.hide()" data-dismiss="modal">Cancel - </button>
       </div>
     </div>
   </div>

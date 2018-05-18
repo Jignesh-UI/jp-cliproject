@@ -1,6 +1,7 @@
 export interface AssetsInterface {
-    assetsStatus: string;
-    assetStatusDescription: string;
-    isObsolete: boolean;
-    isAvailableForReservation: boolean;
+  assetStatusID: number;
+  assetsStatus: string;
+  assetStatusDescription: string;
+  isObsolete: boolean;
+  isAvailableForReservation: boolean;
 }

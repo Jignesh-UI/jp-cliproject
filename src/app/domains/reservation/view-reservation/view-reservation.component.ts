@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
+import { PermissionService } from 'app/userControls/permission.service';
 
 @Component({
   selector: 'app-view-reservation',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewReservationComponent implements OnInit {
 
-  constructor() { }
+  pagePermission = ['admin', 'view', 'home', 'search', 'full', 'reservation', 'setup',
+    'createReservation', 'viewReservation'];
+
+  constructor(private resetPermission: PermissionService) { }
+
 
   ngOnInit() {
+    this.resetPermission.resetPermissions(this.pagePermission);
   }
 
 }

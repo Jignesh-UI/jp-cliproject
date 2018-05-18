@@ -1,12 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { HttpModule } from '@angular/http';
-import { AccordionModule } from 'ngx-bootstrap';
-import { ModalModule } from 'ngx-bootstrap';
-import { NgxPaginationModule } from 'ngx-pagination';
 import { SetupRoutingModule, setupRoutedComponent } from './setup-routing.module';
 import { NavigationComponent } from '../../userControls/setup/navigation/navigation.component';
 import { SetupComponent } from './setup.component';
@@ -26,15 +23,14 @@ import { TaxChargeComponent } from './global-fields/tax-charge/tax-charge.compon
 import { OtherChargeComponent } from './global-fields/other-charge/other-charge.component';
 import { ReasonComponent } from './global-fields/reason/reason.component';
 import { LicenseComponent } from './global-fields/license/license.component';
-import { AssetsDataService } from '../../userControls/setup/services/assets-data.service';
 import { ModalPopupComponent } from './assets/asset-status/modal-popup/modal-popup.component';
 import { AssetsFilterPipe } from './assets/asset-status/assets-filter.pipe';
-import { LoadingSpinnerComponent } from 'app/common/ui/loading-spinner/loading-spinner.component';
+import { SharedModuleModule } from 'app/shared-module/shared-module.module';
 
 @NgModule({
   imports: [
-    CommonModule, BrowserModule, FormsModule, ReactiveFormsModule, SetupRoutingModule, NgxPaginationModule,
-    AccordionModule.forRoot(), ModalModule.forRoot()
+    CommonModule, BrowserModule, FormsModule, SetupRoutingModule,
+    SharedModuleModule
   ],
   declarations: [
     SetupComponent,
@@ -57,10 +53,9 @@ import { LoadingSpinnerComponent } from 'app/common/ui/loading-spinner/loading-s
     ReasonComponent,
     LicenseComponent,
     ModalPopupComponent,
-    AssetsFilterPipe,
-    LoadingSpinnerComponent
+    AssetsFilterPipe
   ],
-  providers: [AssetsDataService],
+  providers: [],
   exports: []
 })
 export class SetupModule { }

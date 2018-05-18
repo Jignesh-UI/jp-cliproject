@@ -21,14 +21,14 @@ import { OtherChargeComponent } from './global-fields/other-charge/other-charge.
 import { ReasonComponent } from './global-fields/reason/reason.component';
 import { LicenseComponent } from './global-fields/license/license.component';
 import { GlobalSettingsComponent } from './global-settings/global-settings/global-settings.component';
-import { AuthGuard } from 'app/login/authguard.guard';
+import { AuthGuard } from 'app/login/auth.guard';
+import { RoleGuard } from 'app/login/role-guard.service';
 
 
 const setuproutes: Routes = [
-  {
-    path: 'setup', component: SetupComponent, canActivate: [AuthGuard], children: [
+ {
+    path: 'setup', component: SetupComponent, canActivate: [AuthGuard, RoleGuard], children: [
       { path: 's_assetStatus', component: AssetStatusComponent },
-      { path: 's_assetSDetail/:assetStatusID', component: AssetStatusComponent },
       { path: 's_rentalClass', component: RentalClassComponent },
       { path: 's_manageAssets', component: ManageAssetsComponent },
       { path: 's_transferAssets', component: TransferAssetsComponent },
@@ -46,6 +46,8 @@ const setuproutes: Routes = [
       { path: '', redirectTo: 's_assetStatus', pathMatch: 'full' }
     ]
   },
+  // { path: '', redirectTo: 's_assetStatus', pathMatch: 'full' },
+  // { path: '**', redirectTo: 'setup' }
 ];
 
 @NgModule({

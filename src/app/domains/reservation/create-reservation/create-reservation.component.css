@@ -1,0 +1,19 @@
+@media only screen and (min-width : 320px) and (max-width :991px) {
+  table.table-data tr:nth-of-type(odd) { background: transparent; border: 0;}
+  table.table-data, thead, tbody, th, td, tr { display: block;}
+  table.table-data thead tr { position: absolute; top: -9999px; left: -9999px;}
+  table.table-data tr {border: 1px solid #ccc;}
+  table.table-data td {border: none; border-bottom: 1px solid #eee; position: relative; padding-left:35%;}
+  table.table-data td:before {position: absolute; top:0;left:0; width:35%; padding:3px 10px 5px 6px; background-color: #f5f5f5; white-space: nowrap; font-size:14px;}
+  table.table-data td:nth-of-type(1):before {content: "Reser. Number";}
+  table.table-data td:nth-of-type(2):before {content: "Cust. Name";}
+  table.table-data td:nth-of-type(3):before {content: "Asset Number";}
+  table.table-data td:nth-of-type(4):before {content: "Rental Class";}
+  table.table-data td:nth-of-type(5):before {content: "PickUp Location";}
+  table.table-data td:nth-of-type(6):before {content: "Pickup DateTime";}
+  table.table-data td:nth-of-type(7):before {content: "Disp. DateTime";}
+  table.table-data td:nth-of-type(8):before {content: "Return Location";}
+  table.table-data td:nth-of-type(9):before {content: "Return DateTime";}
+  table.table-data td:nth-of-type(10):before {content: "Reser. Status";}
+  table.table-data td:nth-of-type(11):before {content: "Action";}
+}

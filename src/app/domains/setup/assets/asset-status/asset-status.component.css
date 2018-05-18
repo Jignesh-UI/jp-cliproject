@@ -1,0 +1,13 @@
+@media only screen and (min-width : 320px) and (max-width :991px) {
+  table.table-data tr:nth-of-type(odd) { background: transparent; border: 0;}
+  table.table-data, thead, tbody, th, td, tr { display: block;}
+  table.table-data thead tr { position: absolute; top: -9999px; left: -9999px;}
+  table.table-data tr {border: 1px solid #ccc;}
+  table.table-data td {border: none; border-bottom: 1px solid #eee; position: relative; padding-left:35%;}
+  table.table-data td:before {position: absolute;top: 6px;left: 6px;width:35%;padding-right:10px;white-space: nowrap; font-size:14px;}
+  table.table-data td:nth-of-type(1):before {content: "Asset Status";}
+  table.table-data td:nth-of-type(2):before {content: "Asset Status Desc.";}
+  table.table-data td:nth-of-type(3):before {content: "Status";}
+  table.table-data td:nth-of-type(4):before {content: "Available for Res.";}
+  table.table-data td:nth-of-type(5):before {content: "Action";}
+}

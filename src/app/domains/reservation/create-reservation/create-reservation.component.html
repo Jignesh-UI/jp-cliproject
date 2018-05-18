@@ -1,71 +1,84 @@
 <h1 class="pageTitle">
-  Search Rental Class
+  Create Reservation
 </h1>
-
-
-<div id="sectionMain" class="sectionMain col-lg-12 col-md-12 col-sm-12 col-xs-12 col-padding-zero">
+<div id="sectionMain" class="sectionMain row col-padding-zero">
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-padding-zero table-view">
-    <div class="row row-mobile">
-      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-padding">
+    <div class="row formRow">
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12  col-padding">
         <label class="label">Customer Username: </label>
-        <select class="form-control">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
+        <select class="form-control" aria-placeholder="test" (change)="onChangeUserName($event.target.value)">
+          <option selected value> -- select an option -- </option>
+          <option *ngFor="let userNV of userNVData" value={ {userNV.userID}}> {{userNV.userName}} </option>
         </select>
       </div>
-      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-padding paddingLeft10">
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 col-padding paddingLeft10">
         <label class="label">Pick-up Location:</label>
-        <select class="form-control">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
+        <select class="form-control" (change)="onChangeLocation($event.target.value)">
+          <option selected value> -- select an option -- </option>
+          <option *ngFor="let userLocationNV of userLocationNVData" value={ {userLocationNV.locationID}}>
+            {{userLocationNV.locationName}}
+          </option>
         </select>
       </div>
-      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-padding paddingLeft10">
-        <label class="label">Return Location:</label>
-        <select class="form-control">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 col-padding paddingLeft10 dateTimePicker">
+        <label class="label">Pick-up Date: </label>
+        <input name="pickupDatetime" type="text" class="form-control" #dpDt="bsDatepicker" bsDatepicker [(bsValue)]="pickupDatetime"
+          [bsConfig]="bsConfig">
+        <span class="icoDateTime icoCalendar" (click)="dpDt.toggle()"></span>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 col-padding paddingLeft10 dateTimePicker">
+        <label class="label">Dispatch Date:</label>
+        <input name="dispatchedDatetime" type="text" class="form-control" #dpDp="bsDatepicker" bsDatepicker [(bsValue)]="dispatchedDatetime"
+          [bsConfig]="bsConfig">
+        <span class="icoDateTime icoCalendar" (click)="dpDp.toggle()"></span>
       </div>
       <div class="clear"> </div>
     </div>
-
-    <div class="row row-mobile">
-      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-padding">
+    <div class="row formRow">
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 col-padding">
+        <label class="label"> Reservation Status: </label>
+        <select class="form-control" (change)="onChangeReservationStatus($event.target.value)">
+          <option selected value> -- select an option -- </option>
+          <option *ngFor="let reservationStatusNv of reservationStatusNvData" value={ {reservationStatusNv.reservationStatusID}}>
+            {{reservationStatusNv.reservationStatus}}
+          </option>
+        </select>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 col-padding paddingLeft10">
         <label class="label"> Rental Class: </label>
-        <select class="form-control">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
+        <ss-multiselect-dropdown [options]="rentalClassOptions" [settings]="mySettings" [(ngModel)]="selectedRentalClass" (ngModelChange)="onChange($event)">
+        </ss-multiselect-dropdown>
       </div>
-      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-padding paddingLeft10">
-        <label class="label">Pick-up Date &amp; Time: </label>
-        <input class="form-control" placeholder="MM/DD/YYYY" />
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 col-padding paddingLeft10 dateTimePicker">
+        <label class="label">Return Date:</label>
+        <input name="returnDatetime" type="text" class="form-control" #dpR="bsDatepicker" bsDatepicker [(bsValue)]="returnDatetime"
+          [bsConfig]="bsConfig">
+        <span class="icoDateTime icoCalendar" (click)="dpR.toggle()"></span>
       </div>
-      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-padding paddingLeft10">
-        <label class="label">Return Date &amp; Time: </label>
-        <input class="form-control" placeholder="MM/DD/YYYY" />
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 col-padding paddingLeft10">
+        <label class="label">Asset Number:</label>
+        <input id="AssetNumberTextBox" [(ngModel)]="assetNumber" class="form-control" type="text" maxlength="100" />
+      </div>
+      <div class="clear"> </div>
+    </div>
+    <div class="row formRow">
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 col-padding">
+        <label class="label">Reservation Number:</label>
+        <input id="ReservationNumberTextBox" [(ngModel)]="reservationNumber" class="form-control" type="number" min="1" maxlength="10"
+        />
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 col-padding paddingLeft10">
+        <label class="label">Note Subject:</label>
+        <input id="NoteSubjectTextBox" [(ngModel)]="noteSubject" class="form-control" type="text" maxlength="100" />
       </div>
       <div class="clear"> </div>
     </div>
 
-    <div class="rowControl">
+    <div class="rowControl formRow">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <input type="checkbox" id="ExactMatchCheckBox" class="k-checkbox">
+        <input type="checkbox" id="ExactMatchCheckBox" [(ngModel)]="isExactMatch" class="k-checkbox">
         <label class="k-checkbox-label" for="ExactMatchCheckBox">Exact Match</label> &nbsp; &nbsp;
-        <input type="checkbox" id="IncludeCloseReservationCheckBox" class="k-checkbox">
+        <input type="checkbox" id="IncludeCloseReservationCheckBox" [(ngModel)]="isIncludeClosed" class="k-checkbox">
         <label class="k-checkbox-label" for="IncludeCloseReservationCheckBox">Include Closed Reservation</label>
       </div>
       <div class="clear"> </div>
@@ -73,7 +86,7 @@
   </div>
 
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-padding-zero btn-Line-Box">
-    <button id="SearchButton" name="SearchButton" type="button" class="btn btn-default btn-green" data-toggle="modal">Search</button>
+    <button id="SearchButton" name="SearchButton" type="button" class="btn btn-default btn-green" data-toggle="modal" (click)="onSearch();">Search</button>
   </div>
 
   <div class="clear"></div>
@@ -81,10 +94,10 @@
 
 
 <div class="grid-box kendoGridBox">
-  <table id="SearchReservationGrid" class="table table-default table-data">
+  <table id="SearchReservationGrid" class="table table-default table-hover table-data">
     <thead>
       <tr>
-        <th> Reservation Number</th>
+        <th>Reservation Number</th>
         <th>Customer Name</th>
         <th>Asset Number</th>
         <th>Rental Class</th>
@@ -96,6 +109,21 @@
         <th>Reservation Status</th>
         <th>Action</th>
       </tr>
+
     </thead>
+    <tbody>
+      <tr *ngFor="let i = index; let reservation of reservationData">
+        <td>a {{reservation.reservationNumber}} </td>
+        <td>a {{reservation.userName}} </td>
+        <td>a {{reservation.assetNumber}} </td>
+        <td>a {{reservation.rentalClassID}} </td>
+        <td>a {{reservation.pickupLocation}} </td>
+        <td>a {{reservation.pickupDatetime}} </td>
+        <td>a {{reservation.dispatchedDatetime}} </td>
+        <td>a {{reservation.returnLocation}} </td>
+        <td>a {{reservation.returnDatetime}} </td>
+        <td>a {{reservation.reservationStatus}} </td>
+      </tr>
+    </tbody>
   </table>
 </div>
