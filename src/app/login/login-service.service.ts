@@ -6,6 +6,9 @@ import { NgxPermissionsService } from 'ngx-permissions';
 
 @Injectable()
 export class LoginService {
+  getUserLoggedIn(): boolean | import("rxjs").Observable<boolean> | Promise<boolean> {
+    throw new Error('Method not implemented.');
+  }
   currentUser: any;
   isLoading;
   jwt = new JwtHelper();
